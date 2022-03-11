@@ -35,7 +35,10 @@ def get_request(url, api_key, **kwargs):
 # Create a `post_request` to make HTTP POST requests
 # e.g., response = requests.post(url, params=kwargs, json=payload)
 def post_request(url, json_payload, **kwargs):
-    response = requests.post(url, params=kwargs, json=json_payload)
+    
+    response = requests.post(url, params=kwargs,  headers={'Content-Type': 'application/json', 'X-Debug-Mode':'true'}, json=json_payload)
+    print(json.dumps(json_payload, indent = 4))
+    print(response)
     return response
 
 # Create a get_dealers_from_cf method to get dealers from a cloud function
@@ -91,7 +94,7 @@ def get_dealer_reviews_from_cf(url, **kwargs):
 # - Get the returned sentiment label such as Positive or Negative
 def analyze_review_sentiments(txt):
     url = "https://api.eu-gb.natural-language-understanding.watson.cloud.ibm.com/instances/29322f3c-8d3f-4a7c-af59-bcc6416ee201"
-    api_key = "nananannananahhhbatman"
+    api_key = "noooooooooooooooooooooooooooooooooooooooo"
     authenticator = IAMAuthenticator(api_key)
     natural_language_understanding = NaturalLanguageUnderstandingV1(
         version='2021-08-01',
